@@ -52,7 +52,7 @@ def handle_incoming_call(request_body):
     response = VoiceResponse()
     # First, play the pre-recorded response
     response.play(url_for('static', filename=f'response.mp3', _external=True))
-    gather = Gather(input='speech', action=f'https://{NGROK_URL}/handle_speech1', timeout=10, speechTimeout='auto')
+    gather = Gather(input='speech', action=f'http://{NGROK_URL}/handle_speech1', timeout=10, speechTimeout='auto')
     response.append(gather)
     return str(response)
 
@@ -67,7 +67,7 @@ def initiate_call(phone_number, user_prompt):
 
     # Initiate the call with correct TwiML
     call = twilio_client.calls.create(
-        twiml=f'<Response><Say>{user_prompt}</Say><Gather action="https://{NGROK_URL}/handle_speech" input="speech" timeout="10" speechTimeout="auto"></Gather></Response>',
+        twiml=f'<Response><Say>{user_prompt}</Say><Gather action="http://{NGROK_URL}/handle_speech" input="speech" timeout="10" speechTimeout="auto"></Gather></Response>',
         to=to_number,
         from_=TWILIO_PHONE_NUMBER
     )

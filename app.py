@@ -142,7 +142,7 @@ def handle_speech():
         audio_url = url_for('static', filename=os.path.basename(audio_path), _external=True)
         response.play(audio_url)
         print(f"Audio played: {audio_url}")
-        gather = Gather(input='speech', action=f'https://{NGROK_URL}/handle_speech', timeout=10, speechTimeout='auto')
+        gather = Gather(input='speech', action=f'http://{NGROK_URL}/handle_speech', timeout=10, speechTimeout='auto')
         response.append(gather)
 
         # Save transcript to SQLite
@@ -176,7 +176,7 @@ def handle_speech1():
         audio_url = url_for('static', filename=os.path.basename(audio_path), _external=True)
         response.play(audio_url)
         print(f"Audio played: {audio_url}")
-        gather = Gather(input='speech', action=f'https://{NGROK_URL}/handle_speech1', timeout=10, speechTimeout='auto')
+        gather = Gather(input='speech', action=f'http://{NGROK_URL}/handle_speech1', timeout=10, speechTimeout='auto')
         response.append(gather)
 
         # Save transcript to SQLite
