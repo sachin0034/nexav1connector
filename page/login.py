@@ -117,7 +117,7 @@ def main():
     if not st.session_state.user_authenticated:
         user_authentication_tab()
     else:
-        st.query_params["page"] = "dashboard"
+        st.switch_page(page="dashboard")
 
 # Run the main function
 if __name__ == '__main__':

@@ -106,14 +106,6 @@ def response_audio():
     response.play(url_for('static', filename='response.mp3', _external=True))
     return str(response)
 
-
-# Function to handle incoming calls
-def handle_incoming_call(request_body):
-    response = VoiceResponse()
-    gather = Gather(input='speech', action='/handle_speech', timeout=10, speechTimeout='auto')
-    response.append(gather)
-    return str(response)
-
 @app.route('/make_call', methods=['GET'])
 def make_call():
     print("Handling request for make_call route")
@@ -142,7 +134,7 @@ def handle_speech():
         audio_url = url_for('static', filename=os.path.basename(audio_path), _external=True)
         response.play(audio_url)
         print(f"Audio played: {audio_url}")
-        gather = Gather(input='speech', action=f'http://{NGROK_URL}/handle_speech', timeout=10, speechTimeout='auto')
+        gather = Gather(input='speech', action=f'https://{NGROK_URL}/handle_speech', timeout=10, speechTimeout='auto')
         response.append(gather)
 
         # Save transcript to SQLite
@@ -176,7 +168,7 @@ def handle_speech1():
         audio_url = url_for('static', filename=os.path.basename(audio_path), _external=True)
         response.play(audio_url)
         print(f"Audio played: {audio_url}")
-        gather = Gather(input='speech', action=f'http://{NGROK_URL}/handle_speech1', timeout=10, speechTimeout='auto')
+        gather = Gather(input='speech', action=f'https://{NGROK_URL}/handle_speech1', timeout=10, speechTimeout='auto')
         response.append(gather)
 
         # Save transcript to SQLite
