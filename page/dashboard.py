@@ -171,7 +171,7 @@ elif option == "Single Call":
         user_prompt = st.text_area("Enter the Prompt:")
         if st.button("Make Call"):
             if phone_number and user_prompt:
-                response = requests.get(f"http://127.0.0.1:5000/make_call?phone_number={phone_number}&prompt={user_prompt}")
+                response = requests.get(f"http://43.205.98.31:5000/make_call?phone_number={phone_number}&prompt={user_prompt}")
                 if response.status_code == 200:
                     st.success("Call initiated successfully!")
                 else:
@@ -197,7 +197,7 @@ elif option == "Bulk Call":
                 if 'phone_number' in df.columns:
                     for index, row in df.iterrows():
                         phone_number = row['phone_number']
-                        response = requests.get(f"http://127.0.0.1:5000/make_call?phone_number={phone_number}&prompt={user_prompt}")
+                        response = requests.get(f"http://43.205.98.31:5000/make_call?phone_number={phone_number}&prompt={user_prompt}")
                         if response.status_code == 200:
                             st.write(f"Call to {phone_number} initiated successfully!")
                         else:
