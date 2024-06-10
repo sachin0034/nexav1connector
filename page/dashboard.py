@@ -129,7 +129,7 @@ st.sidebar.markdown(
 # Add logo at the top of the sidebar
 st.sidebar.image('https://nexacalling-assets.s3.ap-south-1.amazonaws.com/logo.png', use_column_width=True)
 
-option = st.sidebar.radio("", ("Dashboard", "Single Call", "Bulk Call", "Call Logs", "Transcripts", "Configuration", "Credits", "Logout"))
+option = st.sidebar.radio("", ("Dashboard", "Single Call", "Bulk Call", "Call Logs", "Transcripts", "Configuration"))
 
 # Required keys
 required_keys = ["TWILIO_ACCOUNT_SID", "TWILIO_AUTH_TOKEN"]
