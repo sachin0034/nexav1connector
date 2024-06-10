@@ -8,7 +8,7 @@ import sqlite3
 
 # Function to get the database path
 def get_db_path():
-    return os.path.join(os.path.dirname(__file__), '../data/config.db')
+    return os.path.join(os.path.dirname(__file__), '..\data\config.db')
 
 def init_db():
     db_path = get_db_path()
@@ -19,6 +19,8 @@ def init_db():
                       (key TEXT PRIMARY KEY, value TEXT)''')
     conn.commit()
     conn.close()
+     # Set read and write permissions for the database file
+    os.chmod(db_path, 0o666)  # rw-rw-rw-
 
 def get_key(key):
     conn = sqlite3.connect(get_db_path())

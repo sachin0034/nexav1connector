@@ -17,6 +17,7 @@ def get_transcript_data():
     return os.path.join(os.path.dirname(__file__), '../data/transcripts.db')
 
 def init_db_trans():
+    db_path = get_db_path();
     db_transcript_data = get_transcript_data()
     os.makedirs(os.path.dirname(db_transcript_data), exist_ok=True)  # Ensure the directory exists
     conn = sqlite3.connect(db_transcript_data)
@@ -26,6 +27,8 @@ def init_db_trans():
     conn.commit()
     conn.close()
     print("Database and table initialized for transcripts")
+     # Set read and write permissions for the database file
+    os.chmod(db_path, 0o666)  # rw-rw-rw-
 
 # Function to handle logout
 def handle_logout():

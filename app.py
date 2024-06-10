@@ -12,13 +12,14 @@ from flask_cors import CORS
 
 # Function to get the database path
 def get_db_path():
-    return os.path.join(os.path.dirname(__file__), '../data/config.db')
+    return os.path.join(os.path.dirname(__file__), 'data/config.db')
 
 def get_transcript_data():
-    return os.path.join(os.path.dirname(__file__), '../data/transcripts.db')
+    return os.path.join(os.path.dirname(__file__), 'data/transcripts.db')
 
 
 def init_db_trans():
+    db_path = get_db_path();
     db_transcript_data = get_transcript_data()
     os.makedirs(os.path.dirname(db_transcript_data), exist_ok=True)  # Ensure the directory exists
     conn = sqlite3.connect(db_transcript_data)
@@ -27,6 +28,8 @@ def init_db_trans():
                       (call_sid TEXT PRIMARY KEY, conversation TEXT)''')
     conn.commit()
     conn.close()
+     # Set read and write permissions for the database file
+    os.chmod(db_path, 0o666)  # rw-rw-rw-
 
 def init_db():
     db_path = get_db_path()

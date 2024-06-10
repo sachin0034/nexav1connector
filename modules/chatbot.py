@@ -32,6 +32,8 @@ def init_db():
                       (key TEXT PRIMARY KEY, value TEXT)''')
     conn.commit()
     conn.close()
+     # Set read and write permissions for the database file
+    os.chmod(db_path, 0o666)  # rw-rw-rw-
 
 def get_key(key):
     conn = sqlite3.connect(get_db_path())
