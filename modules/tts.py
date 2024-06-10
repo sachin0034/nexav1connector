@@ -6,7 +6,7 @@ import sqlite3
 
 # Function to get the database path
 def get_db_path():
-    return os.path.join(os.path.dirname(__file__), '../data/config.db')
+    return os.path.join(os.path.dirname(__file__), '..\\data\\config.db')
 
 def init_db():
     db_path = get_db_path()

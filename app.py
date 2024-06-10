@@ -12,10 +12,10 @@ from flask_cors import CORS
 
 # Function to get the database path
 def get_db_path():
-    return os.path.join(os.path.dirname(__file__), 'data/config.db')
+    return os.path.join(os.path.dirname(__file__), 'data\\config.db')
 
 def get_transcript_data():
-    return os.path.join(os.path.dirname(__file__), 'data/transcripts.db')
+    return os.path.join(os.path.dirname(__file__), 'data\\transcripts.db')
 
 
 def init_db_trans():
