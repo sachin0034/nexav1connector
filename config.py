@@ -8,7 +8,7 @@ TWILIO_AUTH_TOKEN = ""
 TWILIO_PHONE_NUMBER = ""
 PERSONAL_PHONE ="+919813429478"
 OPENAI_API_KEY= ''
-NGROK_URL="e70f-103-16-69-132.ngrok-free.app"
+NGROK_URL="webhook.nexacalling.com"
 
 MONGODB_URI="mongodb+srv://techavtar:zT6tnyN9MkY785jw@cluster0.ybjfbpw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
